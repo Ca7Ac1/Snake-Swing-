@@ -6,12 +6,14 @@ import javax.swing.JFrame;
 
 import SnakeGame.SnakeBoard.Board;
 
-import java.awt.GridLayout;
-
 public class Game extends JFrame {
 
+    private Board board;
+
     public Game() {
-        add(new Board());
+        board = new Board();
+
+        add(board);
         setResizable(false);
         pack();
 

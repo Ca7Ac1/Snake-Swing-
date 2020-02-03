@@ -2,8 +2,6 @@ package SnakeGame.SnakeBoard;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -28,11 +26,7 @@ public class Board extends JPanel implements ActionListener {
 
     private boolean inGame;
 
-    private static boolean playAgain;
-
     private Timer timer;
-
-    private static int speed;
 
     public static Snake snake;
     public static Food food;
@@ -41,8 +35,6 @@ public class Board extends JPanel implements ActionListener {
 
     public Board() {
         inGame = true;
-
-        playAgain = false;
 
         snake = new Snake();
         food = new Food();
@@ -138,7 +130,7 @@ public class Board extends JPanel implements ActionListener {
     }
 
     private void endGame() {
-        JOptionPane.showMessageDialog(null, "Game Over");
+        JOptionPane.showMessageDialog(null, "Game Over.");
     }
 
     @Override
