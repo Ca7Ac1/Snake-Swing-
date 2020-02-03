@@ -19,10 +19,10 @@ import SnakeGame.SnakeBoard.SnakeAssets.Food;
 
 public class Board extends JPanel implements ActionListener {
 
-    private final static int BOARDWIDTH = 800;
-    private final static int BOARDHEIGHT = 800;
+    public final static int BOARDWIDTH = 400;
+    public final static int BOARDHEIGHT = 400;
 
-    private final static int PIXELSIZE = 25;
+    public final static int PIXELSIZE = 25;
 
     private final static int TOTALPIXELS = (BOARDWIDTH * BOARDHEIGHT) / (PIXELSIZE * PIXELSIZE);
 
@@ -73,6 +73,7 @@ public class Board extends JPanel implements ActionListener {
         super.paintComponent(g);
 
         draw(g);
+        drawGrid(g);
     }
 
     private void draw(Graphics g) {
@@ -93,6 +94,15 @@ public class Board extends JPanel implements ActionListener {
             Toolkit.getDefaultToolkit().sync();
         } else {
             endGame();
+        }
+    }
+
+    private void drawGrid(Graphics g) {
+        for (int i = 0; i <= BOARDWIDTH + 1; i += PIXELSIZE) {
+            for (int h = 0; h <= BOARDHEIGHT + 1; h += PIXELSIZE) {
+                g.setColor(Color.WHITE);
+                g.drawRect(i, h, PIXELSIZE, PIXELSIZE);
+            }
         }
     }
 

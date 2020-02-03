@@ -22,8 +22,8 @@ public class Snake {
         parts = 3;
 
         for (int i = 0; i < 3; i++) {
-            x[i] = 400 + i * 20;
-            y[i] = 400;
+            x[i] = (Board.BOARDWIDTH / 2) + i;
+            y[i] = (Board.BOARDHEIGHT / 2);
         }
 
         direction = Direction.RIGHT;

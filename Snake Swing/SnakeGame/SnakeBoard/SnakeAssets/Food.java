@@ -10,7 +10,7 @@ public class Food {
     private int foodY;
 
     private Random random;
-    private final int RANDOMPOSITION = 32;
+    private final int RANDOMPOSITION = Math.min(Board.BOARDHEIGHT, Board.BOARDWIDTH) / Board.PIXELSIZE;
 
     int locationX;
     int locationY;
