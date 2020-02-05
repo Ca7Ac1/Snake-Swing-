@@ -28,7 +28,7 @@ public class Game{
     }
 
     public static void restart() {
-        frame.setVisible(false);
+        frame.dispose();
         frame = null;
         frame = new JFrame("Snake");
 
