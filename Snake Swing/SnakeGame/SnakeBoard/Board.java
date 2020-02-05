@@ -13,6 +13,7 @@ import javax.swing.Timer;
 
 import SnakeGame.SnakeBoard.SnakeAssets.KeyChecker;
 import SnakeGame.SnakeBoard.SnakeAssets.Snake;
+import SnakeGame.Game;
 import SnakeGame.SnakeBoard.SnakeAssets.Food;
 
 public class Board extends JPanel implements ActionListener {
@@ -25,6 +26,7 @@ public class Board extends JPanel implements ActionListener {
     private final static int TOTALPIXELS = (BOARDWIDTH * BOARDHEIGHT) / (PIXELSIZE * PIXELSIZE);
 
     private boolean inGame;
+    private boolean restart;
 
     private Timer timer;
 
@@ -76,11 +78,9 @@ public class Board extends JPanel implements ActionListener {
             for (int i = 0; i < snake.getParts(); i++) {
                 if (i == 0) {
                     g.setColor(Color.GREEN);
-                    g.fillRect(snake.getSnakeX(i), snake.getSnakeY(i), PIXELSIZE, PIXELSIZE);
-                } else {
-                    g.fillRect(snake.getSnakeX(i), snake.getSnakeY(i), PIXELSIZE, PIXELSIZE);
                 }
 
+                g.fillRect(snake.getSnakeX(i), snake.getSnakeY(i), PIXELSIZE, PIXELSIZE);
             }
 
             Toolkit.getDefaultToolkit().sync();
@@ -130,7 +130,11 @@ public class Board extends JPanel implements ActionListener {
     }
 
     private void endGame() {
-        JOptionPane.showMessageDialog(null, "Game Over.");
+        if (JOptionPane.showConfirmDialog(null, "Game Over. Would you like to restart") == JOptionPane.YES_OPTION) {
+            Game.restart();
+        } else {
+            Game.end();
+        }
     }
 
     @Override

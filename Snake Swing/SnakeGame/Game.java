@@ -6,20 +6,37 @@ import javax.swing.JFrame;
 
 import SnakeGame.SnakeBoard.Board;
 
-public class Game extends JFrame {
+public class Game{
 
-    private Board board;
+    private static JFrame frame; 
 
     public Game() {
-        board = new Board();
 
-        add(board);
-        setResizable(false);
-        pack();
+        frame = new JFrame("Snake");
 
-        setTitle("Snake");
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        initialize();
+    }
+
+    private static void initialize() {
+        frame.add(new Board());
+        frame.setResizable(false);
+        frame.pack();
+
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
+
+    public static void restart() {
+        frame.setVisible(false);
+        frame = null;
+        frame = new JFrame("Snake");
+
+        initialize();
+    }
+
+    public static void end() {
+        frame.dispose();
     }
 
     public static void main(String[] args) {
@@ -27,8 +44,7 @@ public class Game extends JFrame {
 
             @Override
             public void run() {
-                JFrame frame = new Game();
-                frame.setVisible(true);
+                Game game = new Game();
             }
         });
     }
